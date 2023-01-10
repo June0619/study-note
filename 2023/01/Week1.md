@@ -16,6 +16,16 @@
     2. `HttpRequestHandlerAdapter`
     3. `SimpleControllerHandlerAdapter`
 
+
+### Logging
+- Logback, Log4J, Log4J2 등 수많은 로그 라이브러리가 있고, 그것들을 통합하여 인터페이스로 제공하는 것이 SLF4J 라이브러리이다.
+- 부트에서는 기본으로 Logback 을 제공한다.
+- 로그 레벨은 Trace > Debug > Info > Warn > Error (기본 Info)
+    - 보통 개발서버에서는 Debug 레벨, 운영 서버에서는 Info 레벨을 채용한다.
+
+- log 사용 시 문자열 + 연산을 사용하면 안되는 이유
+    - 실제 출력하지 않는 레벨의 로그도 문자열 `+` 연산을 사용하면 리소스를 사용한다.
+
 ## GoF 디자인 패턴 - 생성 패턴
 ### 싱글톤 패턴
 - 싱글톤 패턴 기본 코드 예시
