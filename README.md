@@ -1,4 +1,5 @@
-# Study-Note
+# Study-Note - This week I Learned
+
 
 ## Pricinples
 - 정리에 너무 많은 시간을 쓰지 않는다.
