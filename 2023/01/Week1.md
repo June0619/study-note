@@ -16,6 +16,20 @@
     2. `HttpRequestHandlerAdapter`
     3. `SimpleControllerHandlerAdapter`
 
+### Logging
+```java
+//선언
+//클래스 레벨에 @Slf4j 애노테이션으로 대체 가능
+private final Logger log = LoggerFactory.getLogger(getClass());
+```
+- Logback, Log4J, Log4J2 등 수많은 로그 라이브러리가 있고, 그것들을 통합하여 인터페이스로 제공하는 것이 SLF4J 라이브러리이다.
+- 부트에서는 기본으로 Logback 을 제공한다.
+- 로그 레벨은 Trace > Debug > Info > Warn > Error (기본 Info)
+    - 보통 개발서버에서는 Debug 레벨, 운영 서버에서는 Info 레벨을 채용한다.
+
+- log 사용 시 문자열 + 연산을 사용하면 안되는 이유
+    - 실제 출력하지 않는 레벨의 로그도 문자열 `+` 연산을 사용하면 리소스를 사용한다.
+
 ### 기본 헤더 조회
 ```java
 @RequestMapping("/headers")
@@ -30,19 +44,11 @@ public String headers(
 - 애노테이션 기반 컨트롤러에선 위와 같이 헤더를 조회할 수 있다.
 - `@RequestHeader` 애노테이션에 필수값 여부(`required`) 및 기본값 속성(`defaultValue`) 필드도 있다.
 
-### Logging
-```java
-//선언
-//클래스 레벨에 @Slf4j 애노테이션으로 대체 가능
-private final Logger log = LoggerFactory.getLogger(getClass());
-```
-- Logback, Log4J, Log4J2 등 수많은 로그 라이브러리가 있고, 그것들을 통합하여 인터페이스로 제공하는 것이 SLF4J 라이브러리이다.
-- 부트에서는 기본으로 Logback 을 제공한다.
-- 로그 레벨은 Trace > Debug > Info > Warn > Error (기본 Info)
-    - 보통 개발서버에서는 Debug 레벨, 운영 서버에서는 Info 레벨을 채용한다.
+<br>
 
-- log 사용 시 문자열 + 연산을 사용하면 안되는 이유
-    - 실제 출력하지 않는 레벨의 로그도 문자열 `+` 연산을 사용하면 리소스를 사용한다.
+---
+
+<br>
 
 ## GoF 디자인 패턴 - 생성 패턴
 ### 싱글톤 패턴
@@ -72,7 +78,11 @@ public class Settings {
         - double checked locking 사용 (불필요하게 복잡함)
         - static inner 클래스 사용 
     
-     
+<br>
+
+---
+
+<br>
 
 ## 알고리즘
 ### 정수론
