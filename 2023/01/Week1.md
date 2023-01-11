@@ -16,6 +16,19 @@
     2. `HttpRequestHandlerAdapter`
     3. `SimpleControllerHandlerAdapter`
 
+### 기본 헤더 조회
+```java
+@RequestMapping("/headers")
+public String headers(
+    //모든 헤더 정보를 한번에 조회하고 싶을 때
+    @RequestHeader MultiValueMap<String, String> allHeaders,
+    //특정 헤더를 지정해서 받고 싶을 때
+    @RequestHeader("host") String host) {
+        // Controller Source ...
+    }
+```
+- 애노테이션 기반 컨트롤러에선 위와 같이 헤더를 조회할 수 있다.
+- `@RequestHeader` 애노테이션에 필수값 여부(`required`) 및 기본값 속성(`defaultValue`) 필드도 있다.
 
 ### Logging
 - Logback, Log4J, Log4J2 등 수많은 로그 라이브러리가 있고, 그것들을 통합하여 인터페이스로 제공하는 것이 SLF4J 라이브러리이다.
