@@ -31,6 +31,11 @@ public String headers(
 - `@RequestHeader` 애노테이션에 필수값 여부(`required`) 및 기본값 속성(`defaultValue`) 필드도 있다.
 
 ### Logging
+```java
+//선언
+//클래스 레벨에 @Slf4j 애노테이션으로 대체 가능
+private final Logger log = LoggerFactory.getLogger(getClass());
+```
 - Logback, Log4J, Log4J2 등 수많은 로그 라이브러리가 있고, 그것들을 통합하여 인터페이스로 제공하는 것이 SLF4J 라이브러리이다.
 - 부트에서는 기본으로 Logback 을 제공한다.
 - 로그 레벨은 Trace > Debug > Info > Warn > Error (기본 Info)
