@@ -44,6 +44,28 @@ public String headers(
 - 애노테이션 기반 컨트롤러에선 위와 같이 헤더를 조회할 수 있다.
 - `@RequestHeader` 애노테이션에 필수값 여부(`required`) 및 기본값 속성(`defaultValue`) 필드도 있다.
 
+
+### 파라미터 조회
+#### 애노테이션 기반 컨트롤러에서 파라미터를 받는 네가지 방법
+
+1. request.getAttribute("username")
+2. @RequestParam("username") String name 
+3. @RequestParam String username //파라미터 이름과 변수 이름이 일치해야 한다.
+4. String username //3번의 조건에서 `@RequestParam` 애노테이션까지 생략이 가능하다.
+5. @RequestParam Map<String, Object> paramMap // map 으로 받아서 하나씩 꺼내쓰기
+
+#### 필수 여부와 기본값
+- `@RequestParam` 애노테이션에 밸류로 설정할 수 있는 필드들이다.
+- 필수 여부 (`reqired`)
+    - 원시 타입 파라미터 변수에는 `reqired` 여부와 관계없이 null 이 들어갈 수 없다. (500 erer)
+    - 공백문자는 null 과 달리 required 를 만족한다. (username=)
+- 기본 값 (`defaultValue`)
+    - 해당 파라미터에 값이 없으면 기본 값으로 채워진다.
+    - 필수 여부 필드를 무효화 시키는 특징이 있다. (어차피 기본값을 주므로)
+    - 공백문자의 경우에도 설정한 기본값을 채워버린다. 
+
+
+
 <br>
 
 ---
