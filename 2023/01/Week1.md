@@ -64,6 +64,22 @@ public String headers(
     - 필수 여부 필드를 무효화 시키는 특징이 있다. (어차피 기본값을 주므로)
     - 공백문자의 경우에도 설정한 기본값을 채워버린다. 
 
+#### Param Model 로 받기
+- `@ModelAttribute` 애노테이션을 이용하여 모델을 직접 파라미터로 받을 수 있다.
+```java
+@RequestMapping("/url")
+public String modelAttribute(@ModelAttribute HelloModel model) {
+    //Controller Source...
+}
+``` 
+- model 내부의 setter 메서드를 호출하여 필드 값을 채우므로 setter 없으면 값을 채울 수 없다. (모델은 생성 됨)
+- `@ModelAttribute` 애노테이션은 생략이 가능하다.
+
+#### 애노테이션 생략 시 ArgumentResolver 동작
+- `@RequestParam` 과 `@ModelAttribute` 모두 애노테이션이 생략 가능하다.
+- 스프링의 ArgumentResolver 는 컨트롤러의 파라미터 애노테이션 생략 시 다음과 같은 기본 규칙을 따른다.
+  1. 기본 타입(String, int, Integer 등) = `@RequestParam`
+  2. 나머지 = `@ModelAttribute` = ArgumentResolver 로 지정해둔 타입 외
 
 
 <br>
