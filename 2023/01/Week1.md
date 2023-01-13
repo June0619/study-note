@@ -81,6 +81,17 @@ public String modelAttribute(@ModelAttribute HelloModel model) {
   1. 기본 타입(String, int, Integer 등) = `@RequestParam`
   2. 나머지 = `@ModelAttribute` = ArgumentResolver 로 지정해둔 타입 외
 
+#### HTTP Request Message Body 직접 받는 네가지 방법
+1. HttpServletRequest 객체에서 ServletInputStream 을 꺼낸 후 바디 내용을 추출한다.
+2. 컨트롤러 파라미터로 InputStream 객체를 받아 위 과정을 생략한다.
+3. HttpEntity 객체를 상속받은 RequestEntity 객체와 ResponseEntity 객체를 이용한다. (HttpEntity 써도 됨)
+4. `@RequestBody` 애노테이션과 `@ResponseBody` 애노테이션을 통해 더 간단하게 할 수 있다.
+
+- 주의사항: `@RequestBody` 를 통해 바디내용을 직접 받는것과 `@RequestParam` 을 통해 파라미터 내용을 직접 받는것은 다르다
+- 3번이나 4번에서 바디 메시지를 문자열이나 객체로 변환하는 과정은 HttpMessageConverter 가 수행한다.
+
+
+
 
 <br>
 
