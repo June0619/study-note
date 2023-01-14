@@ -81,6 +81,10 @@ public String modelAttribute(@ModelAttribute HelloModel model) {
   1. 기본 타입(String, int, Integer 등) = `@RequestParam`
   2. 나머지 = `@ModelAttribute` = ArgumentResolver 로 지정해둔 타입 외
 
+#### Spring 의 HTTP 응답
+1. 정적 리소스
+2. 뷰 템플릿 (동적 HTML)
+3. Http Message Body (API)
 
 <br>
 
