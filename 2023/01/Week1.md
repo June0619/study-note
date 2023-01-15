@@ -95,6 +95,16 @@ public String modelAttribute(@ModelAttribute HelloModel model) {
 2. 뷰 템플릿 (동적 HTML)
 3. Http Message Body (API)
 
+###HTTP Message Converter
+#### HTTP 메시지 컨버터 선택 기준
+- Byte : `ByteArrayHttpMessageConveter`
+- 문자 : `StringHttpMessageConverter`
+- 객체 : `MappingJackson2HttpMessageConverter`
+
+#### HTTP 메시지 컨버터 인터페이스
+- HTTP 요청 응답 둘 다 해당된다.
+- `canRead()` , `canWrite()` 등의 메서드에서 해당 클래스나 미디어타입을 지원하는지 체크 
+
 <br>
 
 ---
