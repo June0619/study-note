@@ -8,6 +8,10 @@
 - 두 객체 모두 HTTP 메시지에 대한 직접적인 처리가 필요한 경우 `HttpMessageConverter` 를 사용한다.
 - 요청 및 응답에 대해 스프링에서 정의 된 형태 외의 추가적인 처리 과정을 등록하고 싶다면 `WebMvcConfigurer` 를 통해 직접 등록할 수도 있다.
 
+### ModelAttribute 애노테이션
+- 보통 화면에서 받은 객체가 뷰에서 바로 사용되므로 `@ModelAttribute` 애노테이션의 밸류 값으로 저장된다.
+    - 뷰로 나가기 위한 별도 저장 코드가 불필요 하다.
+
 ### Thymeleaf
 - Thymeleaf 사용 선언
 ```html
