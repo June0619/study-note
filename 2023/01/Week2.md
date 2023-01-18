@@ -61,3 +61,5 @@
 
 #### RedirectAttribute
 - Redirect 되었을 경우 필요한 값들을 컨트롤러에게 전달해주기 위해 `RedirectAttribute` 모델을 사용할 수 있다. 해당 모델은 `Model` 객체를 상속받으며 리다이렉트 시에만 전달받은 값이 존재한다.
+
+- `RedirectAttribute` 에 저장된 데이터 중 PathVariable 에 존재하는 변수명은 대체되고, 나머지는 쿼리 파라미터로 사용된다.
