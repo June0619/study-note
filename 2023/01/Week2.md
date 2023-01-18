@@ -46,3 +46,18 @@
 <span th:onclick="|location.href='@{/member/{memberId}(memberId=${member.id}, query='test'}|">
 ```
     - 생성 링크 : http://localhost:8080/member/1?query=test
+
+### PRG POST/REDIRECT/GET
+#### HTML 폼을 이용해 저장 후 새로고침을 하는 시나리오
+1. GET /item
+2. POST /item
+3. POST /item
+4. POST 요청 반복
+
+- 브라우저 입장에서는 마지막 요청을 반복하기 때문에 POST 요청이 반복 된다.
+
+#### POST, Redirect GET
+- 위 상황을 해결하기 위해서는 간단하게 Redirect 를 통해 마지막 요청을 GET 으로 변경해주면 된다.
+
+#### RedirectAttribute
+- Redirect 되었을 경우 필요한 값들을 컨트롤러에게 전달해주기 위해 `RedirectAttribute` 모델을 사용할 수 있다. 해당 모델은 `Model` 객체를 상속받으며 리다이렉트 시에만 전달받은 값이 존재한다.
