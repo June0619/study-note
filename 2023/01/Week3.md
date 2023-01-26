@@ -5,3 +5,6 @@
 - 구체적으로 어떤 것(Product) 를 생산할 지 서브 클래스 (Factory) 가 결정한다.
 - OCP 원칙을 따르며 구현체 클래스를 통해 생산자를 확장해나간다.
 - 생산자조차 인터페이스 기반으로 변경에 닫혀있도록 설계한다 (이 과정에서 일종의 DI 가 성립된다)
+- 팩토리 메소드 패턴 Example
+    - `java.lang.Calendar` 혹은 `java.lang.NumberFormat`
+    - `BeanFactory` - Factory / Xml or Bean - Product
