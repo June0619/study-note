@@ -69,3 +69,20 @@
 ### 인터프리터 (Interpreter) 패턴
 - 자주 등장하는 문제를 간단한 언어로 정의하고 재사용하는 패턴
 - Expression 과 Parser 를 구현하여 표현식을 정의한다.
+
+### 이터레이터 (Iterator) 패턴
+- 집합 객체 내부 구조를 노출시키지 않고 순회하는 방법을 제공하는 패턴
+- 내부 집합객체가 어떤 타입인지 노출되지 않는다.
+- 이터레이터 사용 방식 변화
+```Java
+        //Java 8 이전
+        Iterator<Post> iterator1 = board.getPosts().iterator();
+        while (iterator1.hasNext()) {
+            Post next = iterator1.next();
+            System.out.println(next.getTitle());
+        }
+
+        //Java 8 이후
+        board.getPosts().iterator()
+            .forEachRemaining(post -> System.out.println(post.getTitle()));
+```
