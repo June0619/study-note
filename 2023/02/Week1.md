@@ -86,3 +86,8 @@
         board.getPosts().iterator()
             .forEachRemaining(post -> System.out.println(post.getTitle()));
 ```
+
+### 중재자 (Mediator) 패턴
+- 객체 간의 소통을 캡슐화 하는 패턴
+- 객체 사이의 결합도를 낮출 수 있다. (중재자 객체의 결합도는 올라간다)
+
