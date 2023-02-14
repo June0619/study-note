@@ -86,11 +86,3 @@
         board.getPosts().iterator()
             .forEachRemaining(post -> System.out.println(post.getTitle()));
 ```
-
-### 중재자 (Mediator) 패턴
-- 객체 간의 소통을 캡슐화 하는 패턴
-- 객체 사이의 결합도를 낮출 수 있다. (중재자 객체의 결합도는 올라간다)
-
-### 메멘토 (Memento) 패턴
-- 객체 내부 상태를 캡슐화 하여 외부에 저장하는 패턴
-- 너무 자주 저장하면 리소스를 낭비할 수 있다.
