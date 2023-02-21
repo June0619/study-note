@@ -27,3 +27,17 @@
     - 인접 리스트
 
 ---
+
+## GoF 디자인 패턴
+### 템플릿 (Template) 패턴
+- 알고리즘 구조를 서브클래스가 확장할 수 있도록 템플릿으로 제공하는 패턴
+- 리스코프 치환 원칙을 위배할 수 있다
+    - `final` 키워드를 적절히 활용해서 어느정도 예방할 수 있다.
+
+
+---
+
+## Java
+### parseInt / valueOf
+- `Integer.parseInt` -> `int` 타입을 리턴
+- `Integer.valueOf` -> `Integer` 타입을 리턴
