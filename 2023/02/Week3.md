@@ -60,6 +60,37 @@
 
 ---
 
+## 정보통신망 1강 (KNOU)
+- 컴퓨터와 통신(개론)
+    - 엘빈토플러 제 3의 물결 (농업혁명, 산업혁명, 정보혁명)
+    - 시대적 가치 (힘->토지->재화->정보)
+    - EDPS(Electronic Data Processing System) and Network
+- 분산시스템
+    - 컴퓨터 자원을 분산시켜 작업(데이터)를 처리함
+    - 강연결 (멀티 프로세서, 하나의 시스템 내) / 약연결 (네트워크, 물리적으로 넓은 범위)
+- 데이터 통신
+    - 데이터 처리 기술과 데이터 전송 기술이 합쳐진 것
+- 통신 시스템 모델
+    - 입력 장치 -> 송신기 -> 전송 매체 -> 수신기 -> 출력 장치
+- 통신 소프트웨어의 조건
+    - 수시 입력
+    - 데이터 다양성 (transaction, time sharing, batch processing)
+    - 신속한 응답
+    - 비동기 처리
+- 통신 프로토콜
+    - 통신 개체 간의 방식에 대한 약속
+    - 주요 요소
+        - 구문 : 형식이나 신호 수준
+        - 의미 : 제어정보
+        - 타이밍 : 속도 및 순서
+    - Computer Network Architercure
+        - 특정 목적을 위한 프로토콜들의 구조적 집합
+            - IBM, SNA(System Network Architecture)
+            - DEC, DNA(Digital Network Architecture)
+            - **OSI (Open Systems Interconnection)**
+
+---
+
 ## GoF 디자인 패턴
 ### 템플릿 (Template) 패턴
 - 알고리즘 구조를 서브클래스가 확장할 수 있도록 템플릿으로 제공하는 패턴
@@ -76,4 +107,3 @@
 ### parseInt / valueOf
 - `Integer.parseInt` -> `int` 타입을 리턴
 - `Integer.valueOf` -> `Integer` 타입을 리턴
-
