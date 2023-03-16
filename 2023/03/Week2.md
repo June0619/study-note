@@ -109,6 +109,8 @@
         - T(n) = O(nlogn)
 - 피벗 선택의 임의성만 보장되면 평균 성능을 보일 가능성이 매우 높음
 
+---
+
 ## Spring MVC2
 ### Thymeleaf
 - HTML Entity
@@ -116,3 +118,18 @@
 - UnEscape
     - `th:text` -> `th:utext`
     - `[[...]]` -> `[(...)]`
+- SpringEL
+```text
+    ${user.username} = userA
+    ${user['username']} = userA
+    ${user.getUsername()} = userA
+```
+- BasicObjects
+    - `request`, `response`, `session`, `servletContext` 네 객체는 더이상 스프링 부트 3.0 이상에서는 기본으로 지원하지 않음 (모델에 직접 추가해야 한다)
+    - `${#locale}`
+    - 편의를 위해 Componant Scan 대상인 Bean 바로 조회 가능
+        ```HTML
+        <li>spring bean = <span th:text="${@helloBean.hello('Spring!')}"></span></li>
+        ```
+- 유틸리티 객체와 날짜
+    - `#temporals` 이용
