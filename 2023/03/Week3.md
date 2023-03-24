@@ -27,5 +27,30 @@
 - 라우터 (IP 주소 사용)
 - 게이트웨이 (프로토콜 전환)
 
-## 파이썬 3강
-- 
+## Spring MVC2 (김영한)
+### 리터럴
+- 문자: `'hello'` (공백이 없으면 작은 따옴표 생략 가능)
+- 숫자: `10`
+- 불린: `true`, `false`
+- null: `null`
+
+### 연산
+- Elvis 연산자
+    ```html
+    ${data}?: '데이터가 없습니다.' = Spring!
+    ${nullData}?: '데이터가 없습니다.' = 데이터가 없습니다.
+    ```
+- No-Operation
+    ```html
+    ${data}?: _ = Spring!
+    ${nullData}?: _ = 데이터가 없습니다.
+    ```
+
+### Safe Navigation Operator
+- thymeleaf 객체 사용 시 NPE 가 발생할만한 지점에 `.` 연산자를 붙여 NPE 대신 null 을 발생시킨다.
+
+```html
+th:class="${errors?.containsKey('price')} ? 'form-control field-error' : 'form-control'"
+```
+
+
