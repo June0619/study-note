@@ -57,8 +57,6 @@
     - 비밀번호 방식
     - 토큰 방식
     - 2단계 인증(2FA Two-Factor Authentication)
-    
-
 
 ---
 
@@ -87,5 +85,29 @@
 ```html
 th:class="${errors?.containsKey('price')} ? 'form-control field-error' : 'form-control'"
 ```
+
+### Validation
+- `BindingResult` 객체 파라미터는 `@ModelAttribute` 객체 바로 다음에 와야한다. 
+- Thymeleaf 의 스프링 검증 오류 통합 기능
+    - `#field` : `BindingResult` 객체의 검증 오류에 바로 접근
+    - `th:errors`: 해당 필드에 오류가 있는경우 태그 출력
+
+- `@ModelAttribute` 에 바인딩 시 타입 오류가 발생한다면
+    - `BindingResult` 가 있으면 400 에러 발생 
+        - 컨트롤러는 호출하지 안고 에러페이지로 이동
+    - `BindingResult` 가 있는 경우 에러 정보를 `BindingResult` 에 담음
+        - 컨트롤러도 정상 호출
+
+- `BindingResult` 와 `Errors` 모두 인터페이스 이다.
+    - 실제 구현체는 `BeanPropertyBindingResult` 이다.
+    
+
+---
+
+## Jenkins를 이용한 CI/CD Pipeline 구축 (Dowon)
+### Waterfall VS Agile
+- 폭포수 : 지나치게 계획에 의존적
+- 애자일 : 계획과 변화의 타협을 가져감
+- 클라우드 네이티브 아키텍처의 구성요소로는 데브옵스, 마이크로서비스, 컨테이너 가상화, 클라우드 환경 등이 있음
 
 
