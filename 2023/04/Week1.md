@@ -12,3 +12,14 @@
     2. code + "." + field
     3. code + "." + field type
     4. code
+
+## CI/CD 
+- docker exec -it {container name} bash
+- Maven plugin install
+    - Manage Jenkins -> Jenkins Plugins -> Available -> Maven
+
+### Exercise2
+- Goals and Options
+    - clean : Remove previous files
+    - compile
+    - package : JAR, WAR Packaging
