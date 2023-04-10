@@ -14,3 +14,14 @@
     4. code
 
 ## 정보통신망 5강 - 데이터 전송기술2
+
+## CI/CD 
+- docker exec -it {container name} bash
+- Maven plugin install
+    - Manage Jenkins -> Jenkins Plugins -> Available -> Maven
+
+### Exercise2
+- Goals and Options
+    - clean : Remove previous files
+    - compile
+    - package : JAR, WAR Packaging
