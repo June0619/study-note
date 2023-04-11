@@ -14,6 +14,7 @@
     4. code
 
 ## 정보통신망 5강 - 데이터 전송기술2
+### 오류 검사
 
 ## CI/CD 
 - docker exec -it {container name} bash
