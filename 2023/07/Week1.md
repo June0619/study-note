@@ -11,3 +11,6 @@
 - Spring MVC 에서 이를 해결하기 위한 약간의 트릭을 사용한다.
     - name 필드에 _name 형태의 hidden input 을 같이 보낸다.
     - 이 경우 체크박스에 값이 오지 않아도 null 이 아닌 false 로 인식한다.
+
+- th:field 사용 시 hidden type 의 input 또한 함께 만들어준다.
+- 조회 시에도 th:field 사용 시 개발자가 직접 'checked' 처리 구현을 자동으로 해준다.
