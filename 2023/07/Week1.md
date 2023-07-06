@@ -14,3 +14,17 @@
 
 - th:field 사용 시 hidden type 의 input 또한 함께 만들어준다.
 - 조회 시에도 th:field 사용 시 개발자가 직접 'checked' 처리 구현을 자동으로 해준다.
+
+### 체크박스 - 멀티
+- 다양한 컨트롤러에 동일한 내용의 모델을 제공할 경우 스프링에서는 공통화 하여 분리할 수 있다.
+```
+@ModelAttribute("regions")
+    public Map<String, String> regions() {
+        Map<String, String> regions = new LinkedHashMap<>();    
+        regions.put("SEOUL", "서울");
+        regions.put("BUSAN", "부산");
+        regions.put("JEJU", "제주");
+        return regions;
+    }
+```
+
