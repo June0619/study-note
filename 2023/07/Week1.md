@@ -30,4 +30,21 @@
 - th:each 태그를 통해 같은 field 를 다중으로 생성하는 결과 타임리프에서는 id 가 겹치지 않도록 숫자를 붙여준다.
     - label 태그 등으로 앞서 동적으로 생성 된 id 를 찾아야 하는 경우에는 `${#ids.prev(필드명)}`, `${#ids.next(필드명)}`을 이용할 수 있다.
 
+### 체크박스 - 라디오
+- 타임리프에서는 ENUM 타입에 직접 접근 가능하다.
+```
+<!-- radio button -->
+        <div>
+            <div>상품 종류</div>
+            <div th:deach="type : ${T(hello.itemservice.domain.item.ItemType).values()} class="form-check form-check-inline">
+            <!-- <div th:each="type : ${itemTypes}" class="form-check form-check-inline"> -->
+                <input type="radio" th:field="*{itemType}" th:value="${type.name()}" class="form-check-inline"/>
+                <label th:for="${#ids.prev('itemType')}" th:text="${type.description}" class="form-check-inline">
+                    BOOK
+                </label>
+            </div>
+        </div>
+```
+    - 다만 패키지 전체 경로를 명시해야 하므로, 패키지 변경에 취약한 점 등 한계가 있어 잘 사용하지는 않는다.
+
 
