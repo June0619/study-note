@@ -19,3 +19,22 @@ ms.getMessage("hello", new Object[]{"Spring"}, "defaultMessage", Locale.KOREA);
 - 사용자가 클라이언트 설정을 통하지 않고도 Locale 을 변경할 수 있도록 스프링에서는 `LocaleResolver` 라는 옵션을 제공한다.
 
 
+## Spring MVC2 - Validation1 복습
+- Spring 의 도움을 받지 않는 순수 Validation(V1)
+    - field 의 값을 비지니스 로직 내에서 직접 체크하여 error 객체를 임의로 만들어 반환한다.
+    - 반환받은 error 객체의 유무에 따라 해당 key 의 field 에서 메시지를 출력한다.
+
+    - Safe Navigation Operation
+        - Thymeleaf 내에서 NPE 에서 자유롭게 함수를 호출할 수 있도록 해주는 문법
+        ```html
+        <!-- errors 객체가 Null 이여도 NPE 가 발생하지 않고 결과 값으로 Null 이 반환된다.-->
+        <div th:if="${errors?.containsKey('globalError')}">
+            <p class="field-error" th:text="${errors['globalError']}">전체 오류 메시지</p>
+        </div>
+        ```
+    - 문제점
+        - 타입 체크가 불가능 (타입 불일치 시 Controller 이전에 이미 에러가 발생하므로)
+        - 고객이 입력한 값이 Validation 에서 통과 안될 시 저장이 불가능
+
+- 스프링을 사용한 검증 (V2)
+    - 
