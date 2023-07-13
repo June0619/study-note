@@ -41,3 +41,7 @@ ms.getMessage("hello", new Object[]{"Spring"}, "defaultMessage", Locale.KOREA);
         - 스프링이 Validation 에 실패하면 오류를 보관하는 객체이다.
         - 해당 객체가 파라미터에 존재하면 ModelAttribute 데이터 바인딩 중 오류가 발생해도 컨트롤러가 호출된다.
         - 검증할 대상 바로 뒤에 와야한다.
+
+## Spring MVC2 - Validation
+- 검증 오류코드는 개발자가 직접 줄 수도 있고, 타입 불일치 등은 스프링이 직접 생성해준다. (ex: `typeMismatch.java.lang.Integer`)
+- 스프링이 생성한 오류 코드도 앞서 `MessageCodesResolver` 를 활용한 전략이 사용 가능하다. (`typeMismatch` -> `typeMismatch.java.lang.Integer`)
