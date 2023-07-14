@@ -37,10 +37,11 @@ ms.getMessage("hello", new Object[]{"Spring"}, "defaultMessage", Locale.KOREA);
         - 고객이 입력한 값이 Validation 에서 통과 안될 시 저장이 불가능
 
 - 스프링을 사용한 검증 (V2)
-    - BindingResult
+    - `BindingResult`
         - 스프링이 Validation 에 실패하면 오류를 보관하는 객체이다.
         - 해당 객체가 파라미터에 존재하면 ModelAttribute 데이터 바인딩 중 오류가 발생해도 컨트롤러가 호출된다.
         - 검증할 대상 바로 뒤에 와야한다.
+    - `FieldError` 객체는 validation 실패 시 사용자의 입력값을 보관한다.
 
 ## Spring MVC2 - Validation
 - 검증 오류코드는 개발자가 직접 줄 수도 있고, 타입 불일치 등은 스프링이 직접 생성해준다. (ex: `typeMismatch.java.lang.Integer`)
