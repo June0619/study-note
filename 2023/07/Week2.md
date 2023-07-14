@@ -46,3 +46,12 @@ ms.getMessage("hello", new Object[]{"Spring"}, "defaultMessage", Locale.KOREA);
 ## Spring MVC2 - Validation
 - 검증 오류코드는 개발자가 직접 줄 수도 있고, 타입 불일치 등은 스프링이 직접 생성해준다. (ex: `typeMismatch.java.lang.Integer`)
 - 스프링이 생성한 오류 코드도 앞서 `MessageCodesResolver` 를 활용한 전략이 사용 가능하다. (`typeMismatch` -> `typeMismatch.java.lang.Integer`)
+- 복잡한 검증로직을 별도 모듈로 분리하기 위해서는 스프링이 제공하는 `Validator` 인터페이스를 상속받아 사용한다.
+    - 해당 인터페이스는 검증이 가능한지를 판단하는 `supports` 메소드와 검증을 진행하는 `validate` 메소드를 사용한다.
+        - 참고
+        ```
+        Item.class.isAssignableFrom(clazz) 
+        //item == clazz
+        //item == subItem
+        ```
+    
