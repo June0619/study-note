@@ -54,4 +54,8 @@ ms.getMessage("hello", new Object[]{"Spring"}, "defaultMessage", Locale.KOREA);
         //item == clazz
         //item == subItem
         ```
-    
+
+- `WebDataBinder` 를 사용하면 파라미터의 바인딩과 검증기를 편리하게 함께 사용할 수 있다.
+- `@Validated` 애노테이션을 붙이면 검증기가 실행된다.
+    - 검증기 적합성 여부는 검증기 내부의 `supports` 메소드로 먼저 확인한다.
+- Spring Main 실행 지점에서 글로벌한 Validator 를 제공할 수 있다.
