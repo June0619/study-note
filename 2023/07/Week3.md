@@ -10,3 +10,8 @@
 ### Bean Validation
     - ModelAttribute 에 들어온 값이 우선 바인딩이 되어야 (타입 일치) Bean Validation 적용
         - 타입 일치하지 않을 시 `typeMismatch` 로 `FieldError` 추가
+    - Bean Validation 에서 에러 메시지를 찾는 순서
+        1. 레벨 순서대로 `messageSource`
+        2. 애노테이션의 `message` 필드 값
+        3. 라이브러리의 기본 값 -> '공백일 수 없습니다.'
+    
