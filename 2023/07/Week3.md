@@ -26,4 +26,12 @@
 
     - Groups 기능 대신 등록/수정 등 상황에 맞추어 Model 을 분리하는 것이 Best 이다.
 
-    
+    - API 의 Vadliation 세 가지 케이스
+        - 성공하는 경우 (Validation 통과)
+        - 바인딩에 실패하는 경우 (JSON 파싱 자체가 실패하는 경우 - 타입 불일치) : 컨트롤러 호출 자체가 X
+        - Vadliation 실패 : 컨트롤러는 호출 됨
+
+    - `@ModelAttribute` 는 필드 단위로 정교하게 바인딩이 된다. 
+        - 한 가지 필드에서 타입 불일치해도 나머지 필드는 생성되어 바인딩 된다.
+    - `@RequestBody` 는 `HttpMessageConverter` 단계에서 JSON 데이터를 객체로 변경하지 못하면 예외 발생.
+        - 컨트롤러도 호출되지 않음
