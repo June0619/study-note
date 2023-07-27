@@ -42,3 +42,12 @@
 
 - 필터 인터페이스 구현 후 등록하면, 서블릿 컨테이너가 싱글톤 객체로 관리한다.
 
+- Spring Boot 는 필터 등록 시 WAS 를 내장하고 있기 때문에 Bean 을 통해 등록이 가능하다.
+    - `FilterRegistartionBean` 을 사용하면 된다.
+        - `setFilter(new LogFilter())` - 등록할 필터 지정
+        - `setOrder(1)` - 필터 순서 지정
+        - `addUrlPattern("/*")` - URL 패턴 지정 (다수 지정 가능)
+    - `@ServletComponentScan` `@WebFilter` 등으로도 등록 가능하지만 순서 조절이 안된다.
+
+- [참고] Logback MDC
+
