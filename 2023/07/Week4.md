@@ -72,3 +72,7 @@
 - 스프링 인터셉터 예외 상황
     - 예외 발생 시 `DispatcherServlet` 에 예외가 전달되고, postHandle 은 호출되지 않는다.
     - `afterCompletion`은 예외와 무관하게 호출된다. (예외 정보도 가져옴)
+
+- 서블릿 필터의 경우 하나의 메소드에서 시작과 끝의 로그를 모두 찍지만, 인터셉터에서는 `preHandle` 에서 지정한 값을 `postHandle`, `afterCompletion` 에서 사용하려면 `request` 객체에 저장해야 한다.
+
+- URL 패턴도 필터와 다르게 '적용할 패턴' 과 '제외할 패턴' 으로 나누어 정밀하게 관리할 수 있다.
