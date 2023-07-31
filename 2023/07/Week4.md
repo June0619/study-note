@@ -42,3 +42,37 @@
 
 - 필터 인터페이스 구현 후 등록하면, 서블릿 컨테이너가 싱글톤 객체로 관리한다.
 
+- Spring Boot 는 필터 등록 시 WAS 를 내장하고 있기 때문에 Bean 을 통해 등록이 가능하다.
+    - `FilterRegistartionBean` 을 사용하면 된다.
+        - `setFilter(new LogFilter())` - 등록할 필터 지정
+        - `setOrder(1)` - 필터 순서 지정
+        - `addUrlPattern("/*")` - URL 패턴 지정 (다수 지정 가능)
+    - `@ServletComponentScan` `@WebFilter` 등으로도 등록 가능하지만 순서 조절이 안된다.
+
+- [참고] Logback MDC
+
+- 필터에서는 다음 필터로 `ServletRequest`, `ServletResponse` 객체를 바꿔치기 해서 넘길 수 있다.
+
+### Spring Interceptor
+
+- 스프링 인터셉터는 디스패처 서블릿콰 컨트롤러 사이에서 컨트롤러 직전에 호출된다.
+- 스프링 MVC 의 시작점은 디스패처 서블릿이므로, 디스패처 서블릿 이후에 호출된다.
+
+> ❗ 인터셉터의 흐름 </br>
+> HTTP 요청 -> WAS -> 필터 -> 서블릿 -> 스프링 인터셉터 -> 컨트롤러 </br></br>
+
+- 체인 형식으로 여러개를 추가할 수도 있다.
+- 필터의 경우 doFilter 하나지만, 인터셉터는 컨트롤러 호출 전과 후로 기능이 세분화 되어있다.
+
+- 인터셉터 호출 흐름
+    - `preHandle`: 핸들러 어댑터 호출 전에 호출 됨
+    - `postHandle`: 핸들러 어댑터 호출 후 호출 됨
+    - `afterCompletion`: 뷰 렌더링 이후 호출 됨
+
+- 스프링 인터셉터 예외 상황
+    - 예외 발생 시 `DispatcherServlet` 에 예외가 전달되고, postHandle 은 호출되지 않는다.
+    - `afterCompletion`은 예외와 무관하게 호출된다. (예외 정보도 가져옴)
+
+- 서블릿 필터의 경우 하나의 메소드에서 시작과 끝의 로그를 모두 찍지만, 인터셉터에서는 `preHandle` 에서 지정한 값을 `postHandle`, `afterCompletion` 에서 사용하려면 `request` 객체에 저장해야 한다.
+
+- URL 패턴도 필터와 다르게 '적용할 패턴' 과 '제외할 패턴' 으로 나누어 정밀하게 관리할 수 있다.
