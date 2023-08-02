@@ -33,3 +33,10 @@
 ### Spring Boot Exception
 - 예외 처리를 위해 앞선 과정에서는 `WebServletCustomizer`를 만들고 예외에 따라 컨트롤러 및 페이지를 추가했다.
 - 스프링 부트에서는 `ErrorPage` 객체 및 `/error` 경로의 기본 오류 페이지를 제공한다.
+
+- `BasicErrorController` 에서는 오류 정보를 모델에 담지 않는다.
+    - `server.error.include-` 옵션들을 통해 에러 메시지를 모델에 전달할 수 있지만, 보안상의 이유로는 사용하지 않는다.
+
+- 몇 가지 설정들
+    - `server.error.whitelabel.enabled=true` : 오류 처리하는 화면이 없을 때 스프링의 기본 whitelabel 오류 페이지 제공 여부
+    - `server.error.path=/error` : `BasicErrorController` 에서 기본으로 사용하는 오류 페이지 경로 
