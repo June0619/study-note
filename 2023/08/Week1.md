@@ -40,3 +40,7 @@
 - 몇 가지 설정들
     - `server.error.whitelabel.enabled=true` : 오류 처리하는 화면이 없을 때 스프링의 기본 whitelabel 오류 페이지 제공 여부
     - `server.error.path=/error` : `BasicErrorController` 에서 기본으로 사용하는 오류 페이지 경로 
+
+### API 에외처리
+- 기존의 예외처리에서는 에러 발생 시 HTML 문서를 전달해준다. 하지만 API 통신 중인 클라이언트는 JSON 응답을 기대하고 있다.
+- ExceptionController 측에서 `Content-Type: Application/JSON` 인 경우에 JSON 응답을 주도록 설정 할 수 있다.
