@@ -44,3 +44,14 @@
 ### API 에외처리
 - 기존의 예외처리에서는 에러 발생 시 HTML 문서를 전달해준다. 하지만 API 통신 중인 클라이언트는 JSON 응답을 기대하고 있다.
 - ExceptionController 측에서 `Content-Type: Application/JSON` 인 경우에 JSON 응답을 주도록 설정 할 수 있다.
+
+### `ExceptionResolver`
+- 예외가 컨트롤러 밖으로 전달 되는 경우, 이 예외를 어떻게 처리할 지 새롭게 정의할 수 있다.
+- `ExceptionResolver` 가 작동하는 경우 WAS 밖으로 예외가 전달되지 않고, `DispatcherServlet` 내에서 `afterCompletion` 메소드가 호출되기 전 예외처리를 시도한다.
+
+- ExceptionResolver 에서 예외 발생 시 해당 예외를 try catch 구문으로 정상 처리한 것처럼 응답하는 것이 목적이다.
+
+- ExceptionResolver 에서 응답하는 값에 따른 동작 방식
+    1. `new ModelAndView()`: 렌더링은 실행하지 않고 서블릿에서 정상 응답으로 간주한다.
+    2. view 가 존재하는 경우: 해당 페이지를 렌더링 한다. (error 페이지 등)
+    3. `null`: 해당 에러를 다시 WAS까지 전달해버린다.
