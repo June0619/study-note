@@ -54,4 +54,11 @@
 - ExceptionResolver 에서 응답하는 값에 따른 동작 방식
     1. `new ModelAndView()`: 렌더링은 실행하지 않고 서블릿에서 정상 응답으로 간주한다.
     2. view 가 존재하는 경우: 해당 페이지를 렌더링 한다. (error 페이지 등)
-    3. `null`: 해당 에러를 다시 WAS까지 전달해버린다.
+    3. `null`: 해당 에러를 다시 WAS까지 전달해버린다. 
+
+- `ExceptionResolver` 활용
+    1. API 상태코드 변경 (5xx -> 4xx)
+    2. 모델&뷰 반환
+    3. Body 바로 응답
+
+- (참고) `ExceptionResolver` 등록 시 `extendHandlerExceptionResolvers` 메소드를 상속받아 등록하는 것이 좋다. `configureHandlerExceptionResolvers` 를 사용시 스프링에서 기본으로 등록하는 ExceptionResolver 들을 모두 제거한다.
