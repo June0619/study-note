@@ -42,6 +42,10 @@
     - `server.error.path=/error` : `BasicErrorController` 에서 기본으로 사용하는 오류 페이지 경로 
 
 ### API 에외처리
+
+- `BasicErrorController` 에서는 기본으로 클라이언트의 `Accept` 헤더의 정보를 보고 ModelAndView 방식이나 Json 방식의 응답으로 분기해서 에러를 전달해준다.
+    - API 응답일 경우에도 `server.error.include-` 설정들을 통해 더 많은 에러 정보를 전달할 수 있으나, 보안상 자제하는 것이 좋다.
+
 - 기존의 예외처리에서는 에러 발생 시 HTML 문서를 전달해준다. 하지만 API 통신 중인 클라이언트는 JSON 응답을 기대하고 있다.
 - ExceptionController 측에서 `Content-Type: Application/JSON` 인 경우에 JSON 응답을 주도록 설정 할 수 있다.
 
