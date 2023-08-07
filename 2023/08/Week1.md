@@ -66,3 +66,7 @@
     3. Body 바로 응답
 
 - (참고) `ExceptionResolver` 등록 시 `extendHandlerExceptionResolvers` 메소드를 상속받아 등록하는 것이 좋다. `configureHandlerExceptionResolvers` 를 사용시 스프링에서 기본으로 등록하는 ExceptionResolver 들을 모두 제거한다.
+
+
+- ExceptionResolver 를 사용하면 예외가 WAS 까지 올라가지 않고 깔끔하게 해결된다는 장점이 있다.
+    - 하지만 이를 막상 직접 구현하려면 로직이 복잡하고 중복되는 코드가 많다.
