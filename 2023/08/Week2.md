@@ -12,3 +12,7 @@
     - `@ResponseStatus(code=404, reason="message")` 가 붙은 Exception (직접 만듬)
     - 예외의 인스턴스가 `ResponseStatusException` 인 경우 (이미 만들어져있는 예외를 감싸서 사용)
 
+
+- `DefaultHandlerExceptionResolver`
+    - 스프링 내부에서 발생하는 예외들을 처리하기 위한 ExceptionResolver
+    - `TypeMismatchException`, `HttpRequestMethodNotSupportedException` 등 을 다룬다.
