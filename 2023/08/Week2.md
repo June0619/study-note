@@ -54,3 +54,11 @@
     public class ExampleAdvice3 {}
     ```
 
+## 주말 과제
+### 문제
+- 일반적인 ModelAndView 패턴의 컨트롤러를 사용하는 경우 BindingResult 객체에 담긴 에러를 Thymeleaf 템플릿 엔진에서 메시지로 변환해주는 계층이 존재할 것이다. (리소스 번들 -> 애노테이션 메시지 -> 디폴트 메시지 순으로 조회)
+    - 예시: `NotBlank.MemberDto.Name` -> `NotBlank.MemberDto` -> `NotBlank` 순으로 각 리소스들을 조회하여 메시지로 변환
+
+- 하지만 BindingResult 객체를 직접 `MethodArgumentNotValidException` 예외 시 사용하는 경우 (API 응답 등) 메시지를 직접 정제해야 하는데 이때 타임리프 등 템플릿 엔진등에서 사용하는 것 처럼 변환하는 로직이 필요하다.
+
+- 이를 구현하여 API 의 응답으로 Validation 예외를 반환하여도 메시지를 깔끔하게 생성하여 반환하는 코드를 구현해보자.
