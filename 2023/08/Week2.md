@@ -36,3 +36,21 @@
 
     - 순서 정리 🚕
     > 예외 발생 (IllegalArgumentException) -> 컨트롤러 밖으로 예외 전파 -> `ExceptionResolver` 작동 -> `ExceptionHandlerExceptionResolver` 작동 -> `@ExceptionHandler` 애노테이션 작동 -> 명시된 응답 객체 반환 -> `@ResponseStatus` 애노테이션에 붙은 코드 반환
+
+- `@ControllerAdvice`
+    - 컨트롤러 내에 예외처리 기능들이 있으면 중복 예외 처리 시 다른 컨트롤러에 같은 기능을 만들어야 하고, 보기에도 깔끔하지 않다.
+    - 따라서 컨트롤러 들이 하는 예외 처리를 공통으로 분리해낼 수 있도록 스프링이 제공하는 기능이다.
+    - `@RestControllerAdvice` 는 `@ControllerAdvice` 애노테이션에 `@ResponseBody` 가 추가된 것이다.
+
+    - 대상 컨트롤러를 지정하는 방법들
+    ```java
+    @ControllerAdvice(annotations = RestController.class)
+    public class ExampleAdvice1 {}
+
+    @ControllerAdvice("org.example.controllers")
+    public class ExampleAdvice2 {}
+
+    @ControllerAdvice(assignableTypes = {ControllerInterface.class, AbstractController.class})
+    public class ExampleAdvice3 {}
+    ```
+
