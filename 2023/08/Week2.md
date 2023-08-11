@@ -62,3 +62,60 @@
 - 하지만 BindingResult 객체를 직접 `MethodArgumentNotValidException` 예외 시 사용하는 경우 (API 응답 등) 메시지를 직접 정제해야 하는데 이때 타임리프 등 템플릿 엔진등에서 사용하는 것 처럼 변환하는 로직이 필요하다.
 
 - 이를 구현하여 API 의 응답으로 Validation 예외를 반환하여도 메시지를 깔끔하게 생성하여 반환하는 코드를 구현해보자.
+
+### 구현 
+- MemberDto.class
+```java
+@Data
+    @AllArgsConstructor
+    static class MemberDto {
+        private String memberId;
+        @NotBlank //message.properties 에 해당 code 에 대한 메시지 정의 : {0} 필드에는 공백을 입력할 수 없습니다.
+        private String name;
+    }
+```
+
+- RestController
+```java
+    @PostMapping("/api/member")
+    public String insertMember(@RequestBody @Validated MemberDto memberDto) {
+        //Insert Member
+        return "OK";
+    }
+```
+
+- RestControllerAdvice
+```java
+@ExceptionHandler(MethodArgumentNotValidException.class)
+    public ErrorResult handleValidationExceptions(MethodArgumentNotValidException ex){
+        String message = ex.getAllErrors()
+                .stream()
+                .map(this::getErrorMessage)
+                //Validation에 실패한 필드가 여러개일 경우를 위한 처리
+                //list 로 collect 해도 상관없음
+                .collect(Collectors.joining("\n"));
+
+        log.error("[exceptionHandler] ex", ex);
+
+        return new ErrorResult("Validation", message);
+    }
+
+    private String getErrorMessage(ObjectError error) {
+        String[] codes = error.getCodes();
+        for (String code : codes) {
+            try {
+                return messageSource.getMessage(code, error.getArguments(), null);
+            } catch (NoSuchMessageException e) {
+                continue;
+            }
+        }
+        return error.getDefaultMessage();
+    }
+```
+
+## Spring MVC2 - TypeConverter
+### 스프링 타입 컨버터
+- 스프링에서 `@RequestParam`, `@ModelAttribute`, `@PathVariable` 등 파라미터를 직접 받아낼 수 있는 여러 애노테이션이 존재한다.
+- 기본은 request 객체에서 꺼낼 때 String 타입으로 넘어오지만, Integer 및 Boolean 등 여러 타입 변환도 지원한다.
+- 이 때 이러한 타입 변환을 확장할 수 있는것이 바로 스프링의 Converter 인터페이스이다.
+    - 과거에는 `PropertyEditor` 라는 것을 이용했지만 동시성 이슈가 있어서 현재는 잘 사용되지 않는다.
