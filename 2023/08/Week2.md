@@ -119,3 +119,9 @@
 - 기본은 request 객체에서 꺼낼 때 String 타입으로 넘어오지만, Integer 및 Boolean 등 여러 타입 변환도 지원한다.
 - 이 때 이러한 타입 변환을 확장할 수 있는것이 바로 스프링의 Converter 인터페이스이다.
     - 과거에는 `PropertyEditor` 라는 것을 이용했지만 동시성 이슈가 있어서 현재는 잘 사용되지 않는다.
+
+### ConversionService
+- 이러한 타입 컨버터들을 하나하나 직접 주입받아 사용하는 것은 너무 불편하기 때문에 등록과 사용을 편리하게 관리해주는 인터페이스이다.
+- `DefaultConversionService` 라는 구현체를 Spring Bean 으로 별도 관리하여 사용하면 된다.
+- 위의 구현체는 컨버터를 등록하는 `ConverterRegistry` 인터페이스와 사용하는 `ConversionService` 인터페이스를 모두 구현하는데 이처럼 클라이언트가 자신이 이용하지 않는 메서드에 의존하지 않도록 하는 원칙을 **ISP(Interface Segregation Principle)** 원칙이라 한다.
+- [참고 링크](https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4_%EB%B6%84%EB%A6%AC_%EC%9B%90%EC%B9%99)
