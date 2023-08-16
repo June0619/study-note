@@ -11,3 +11,27 @@
 ### View 템플릿에 적용
 - 타임리프 문법으로는 값을 `${{}}` 와 같이 사용하면 컨버전 서비스를 사용한다.
 - `th:field` 필드에는 자동으로 컨버전 서비스가 적용된다.
+
+### Formatter
+- `Converter` 는 범용적인 상황에서 쓰이지만 일반적으로는 문자->숫자 나 문자->문자 등 의 제한적인 상황이 대부분이다.
+- 이를 위해 현지화 정보(`Locale`)를 추가해서 문자에 맞춘 출력을 적극적으로 지원하는 것이 바로 `Formatter` 이다.
+- `Formatter` 인터페이스를 상속받아서 컨버터와 마찬가지로 `ConversionService`에 등록하여 사용하면 된다.
+- `DefaultFormattingConversionService` 는 `FormattingConversionService` 에 기본적인 통화나 숫자등 기본 포멧터를 추가해서 제공한다.
+- 스프링 부트는 `DefaultFormattingConversionService` 를 상속받는 `WebConversionService`를 사용한다.
+- 컨버터와 포멧터를 겹치는 타입으로 두가지 등록하면 컨버터가 우선으로 동작한다.
+- 애노테이션 기반으로도 간단하게 사용할 수 있다.
+
+```java
+@Data
+static class Form {
+    @NumberFormat(patter = "###,###")
+    private Integer number;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime localDateTime;
+}
+```
+
+### 컨버터 주의사항
+- 메시지 컨버터(`HttpMessageConverter`) 에는 컨버전 서비스가 적용되지 않는다.
+- JSON 객체 변환에 포멧팅을 사용하고 싶은 경우 Jackson 내부 포멧터를 사용해야 한다.
