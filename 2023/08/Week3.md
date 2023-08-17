@@ -35,3 +35,37 @@ static class Form {
 ### 컨버터 주의사항
 - 메시지 컨버터(`HttpMessageConverter`) 에는 컨버전 서비스가 적용되지 않는다.
 - JSON 객체 변환에 포멧팅을 사용하고 싶은 경우 Jackson 내부 포멧터를 사용해야 한다.
+
+## Spring MVC2 - 파일 업로드
+### 개요
+- HTML 폼 전송 방식
+    - `application/x-www-form-unlencoded` : 일반적인 폼 데이터 전송 방식
+    - `multipart/form-data` : 파일등을 포함한 전송을 위한 방식
+
+- `multipart/form-data` 전송 예제
+```
+POST /save HTTP/1.1
+Host: localhost:8080
+Content-Type: multipart/form-data; boundary=-------XXX (랜덤 값)
+Content-length: 10123
+
+-------XXX
+Content-Disposition: form-data; name="name"
+
+kim
+-------XXX
+Content-Disposition: form-data; name="file1"; filename="img.png"
+Content-Type: image/png
+
+10aefe01230ejfewiooiaefeewf....
+-------XXX--
+```
+
+### 서블릿과 파일 업로드
+- 스프링 파일 사이즈 제한 설정
+    - `spring.servlet.multipart.max-file-size`
+    - `spring.servlet.multipart.max-request-size`
+- 스프링 멀티파티 관련 동작 온오프 설정
+    - `spring.servlet.multipart.enabled`
+
+- `DispatcherServlet` 에서 멀티파트 관련 요청이면 `MultipartResolver` 에 의해 `HttpServletRequest` 객체가 `MultipartHttpServletRequest` 객체로 변환된다.
