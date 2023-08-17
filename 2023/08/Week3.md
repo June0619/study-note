@@ -69,3 +69,8 @@ Content-Type: image/png
     - `spring.servlet.multipart.enabled`
 
 - `DispatcherServlet` 에서 멀티파트 관련 요청이면 `MultipartResolver` 에 의해 `HttpServletRequest` 객체가 `MultipartHttpServletRequest` 객체로 변환된다.
+
+## 이펙티브 자바 - 아이템1. 생성자 대신 정적 팩토리 메소드를 고려하라
+
+### 장점
+1. 메소드의 명칭이 조금 더 명시적으로 나타난다.
