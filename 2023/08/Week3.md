@@ -70,7 +70,31 @@ Content-Type: image/png
 
 - `DispatcherServlet` 에서 멀티파트 관련 요청이면 `MultipartResolver` 에 의해 `HttpServletRequest` 객체가 `MultipartHttpServletRequest` 객체로 변환된다.
 
-## 이펙티브 자바 - 아이템1. 생성자 대신 정적 팩토리 메소드를 고려하라
+- 서블릿 리퀘스트 객체의 파일 가져오기
+    ```java
+    //multi part 컬렉션 객체
+    Collection<Part> parts = request.getParts();
+     //...
+     //part 객체 파일로 저장
+    part.write(fullPath);
+    ```
 
+### 스프링 파일 업로드
+- 서블릿만 가지고 파일을 전송하려면 `HttpServletRequest` 객체를 받아야 하고 여러모로 불편한 점이 많기 때문에 스프링에서는 컨트롤러단에서 편리하게 사용할 수 있도록 `MultipartFile` 객체를 지원한다.
+
+- `MultipartFile` 객체를 이용한 파일 전송
+```java
+    @PostMapping("/upload")
+    public String saveFile(@RequestParam MultipartFile file) throws IOException {
+        if (!file.isEmpty()) {
+            String fullPath = fileDir + file.getOriginalFilename();
+            file.transferTo(new File(fullPath));
+        }
+        return "upload-form";
+    }
+```
+
+
+## 이펙티브 자바 - 아이템1. 생성자 대신 정적 팩토리 메소드를 고려하라
 ### 장점
 1. 메소드를 사용함으로써 생성의 구분이 명시적으로 나타난다.
