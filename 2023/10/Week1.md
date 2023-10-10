@@ -15,3 +15,8 @@
     - 체크하지 않아도 되는 예외이다.
     - `RuntimeException` 을 상속받으며, 처리하거나 명시적으로 던지지 않아도 된다. (물론 명시적으로 던져도 된다)
     - 던지지 않은 경우 Callstack 을 타고 main() 까지 올라가게 되며 이 경우 애플리케이션이 비정상 종료 된다.
+
+- 올바른 예외 활용
+    - Checked Exception 이 너무 많아지면 개발자가 의존성 문제, 해결할 수 없는데 계속 해서 전파해야하는 예외 문제가 많아지므로 가급적 Runtime Exception 을 상속받는 UnChecked Exception 을 활용하는 것이 추세이다.
+        - 이 때 Original Exception 을 Throwable 형태로 부모에게 전파해 주어야 StackTrace 를 확인할 수 있다.
+
